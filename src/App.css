@@ -5,46 +5,49 @@
   text-align: center;
 }
 
-.App {
-  padding: 2rem;
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
 }
 
-.App-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
-  border-radius: 8px;
-  margin-bottom: 20px;
+.logo:hover {
+  filter: drop-shadow(0 0 2em rgba(20, 184, 166, 0.6));
 }
 
-.connection-status {
-  margin: 20px 0;
-  padding: 15px;
-  border-radius: 5px;
-  background-color: #f5f5f5;
-  color: #333;
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em rgba(20, 184, 166, 0.6));
 }
 
-.connected {
-  color: #28a745;
-  font-weight: bold;
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.disconnected {
-  color: #dc3545;
-  font-weight: bold;
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
-.env-info {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #e9ecef;
-  border-radius: 5px;
-  color: #333;
+.card {
+  padding: 2em;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(20, 184, 166, 0.1);
+  background-color: rgba(20, 184, 166, 0.02);
+  transition: all 0.3s ease;
 }
 
-.env-info p {
-  margin: 5px 0;
-  font-family: monospace;
-  font-size: 14px;
+.card:hover {
+  border-color: rgba(20, 184, 166, 0.3);
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.1);
+}
+
+.read-the-docs {
+  color: #5f7676;
 }

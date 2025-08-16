@@ -1,70 +1,403 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap');
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  color: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 220 23% 95%;
+    --sidebar-foreground: 215 25% 27%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 90%;
+    --sidebar-accent-foreground: 215 25% 27%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 221 83% 53%;
   }
-  a:hover {
-    color: #747bff;
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    --sidebar-background: 215 28% 17%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217.2 91.2% 59.8%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 25% 27%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 215 25% 27%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
+
+  body {
+    @apply bg-background text-foreground font-sans dark:bg-background dark:text-foreground;
+  }
+
+  pre, code {
+    @apply font-mono;
+  }
+}
+
+.markdown-editor {
+  @apply font-mono text-base leading-relaxed;
+}
+
+.markdown-preview {
+  @apply prose max-w-none prose-blue dark:prose-invert;
+}
+
+.markdown-preview pre {
+  @apply bg-secondary p-4 rounded-md overflow-x-auto;
+}
+
+.markdown-preview code {
+  @apply text-sm font-mono text-primary;
+}
+
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3,
+.markdown-preview h4,
+.markdown-preview h5,
+.markdown-preview h6 {
+  @apply font-sans font-semibold text-foreground;
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+  @apply my-4 ml-6;
+}
+
+/* Pride Styling & Responsive Utilities */
+@layer components {
+  /* Pride Flag Color Variables */
+  :root {
+    /* Lesbian Flag Colors */
+    --lesbian-orange: #d62d20;
+    --lesbian-white: #ffffff;
+    --lesbian-pink: #d462a6;
+    
+    /* Bisexual Flag Colors */
+    --bisexual-pink: #d60270;
+    --bisexual-purple: #9b59b6;
+    --bisexual-blue: #0038a8;
+    
+    /* Pansexual Flag Colors */
+    --pansexual-pink: #ff218c;
+    --pansexual-yellow: #ffd800;
+    --pansexual-blue: #21b1ff;
+    
+    /* Transgender Flag Colors */
+    --transgender-blue: #5bcefa;
+    --transgender-pink: #f5a9b8;
+    --transgender-white: #ffffff;
+    
+    /* Rainbow Pride Colors */
+    --rainbow-red: #e40303;
+    --rainbow-orange: #ff8c00;
+    --rainbow-yellow: #ffed00;
+    --rainbow-green: #008018;
+    --rainbow-blue: #0066ff;
+    --rainbow-purple: #8b00ff;
+  }
+  
+  /* Responsive Scaling Utilities */
+  .scale-responsive {
+    @apply scale-90 sm:scale-95 md:scale-100 lg:scale-105;
+  }
+  
+  .text-responsive {
+    @apply text-sm sm:text-base md:text-lg lg:text-xl;
+  }
+  
+  .padding-responsive {
+    @apply p-2 sm:p-4 md:p-6 lg:p-8;
+  }
+  
+  /* Animated Pride Flag Gradients */
+  @keyframes lesbian-pride {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  @keyframes rainbow-pride {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  @keyframes bi-pride {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Pride Flag Gradients with Slower Animations */
+/* Pride Flag Gradients with Slower Animations */
+.lesbian-gradient {
+  background: linear-gradient(-45deg, 
+    var(--lesbian-orange), 
+    var(--lesbian-white), 
+    var(--lesbian-pink)
+  );
+  background-size: 400% 400%;
+  animation: slowPrideGradient 8s ease-in-out infinite;
+}
+
+.bisexual-gradient {
+  background: linear-gradient(-45deg, 
+    var(--bisexual-pink), 
+    var(--bisexual-purple), 
+    var(--bisexual-blue)
+  );
+  background-size: 400% 400%;
+  animation: slowPrideGradient 8s ease-in-out infinite;
+}
+.rainbow-header-static {
+  background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ff0080, #9370db, #ff1493);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.pansexual-gradient {
+  background: linear-gradient(-45deg, 
+    var(--pansexual-pink), 
+    var(--pansexual-yellow), 
+    var(--pansexual-blue)
+  );
+  background-size: 400% 400%;
+  animation: slowPrideGradient 8s ease-in-out infinite;
+}
+
+.transgender-gradient {
+  background: linear-gradient(-45deg, 
+    var(--transgender-blue), 
+    var(--transgender-pink), 
+    var(--transgender-white),
+    var(--transgender-pink),
+    var(--transgender-blue)
+  );
+  background-size: 400% 400%;
+  animation: slowPrideGradient 8s ease-in-out infinite;
+}
+
+.rainbow-gradient {
+  background: linear-gradient(-45deg, 
+    var(--rainbow-red), 
+    var(--rainbow-orange), 
+    var(--rainbow-yellow), 
+    var(--rainbow-green), 
+    var(--rainbow-blue), 
+    var(--rainbow-purple)
+  );
+  background-size: 400% 400%;
+  animation: slowPrideGradient 8s ease-in-out infinite;
+}
+
+@keyframes slowPrideGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Rainbow Fade Animation for Headers - Slow Gradient */
+@keyframes rainbowFade {
+  0% { background-position: 0% 50%; }
+  20% { background-position: 25% 50%; }
+  40% { background-position: 50% 50%; }
+  60% { background-position: 75% 50%; }
+  80% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.rainbow-header {
+  background: linear-gradient(90deg, 
+    #ff0000, #ff4500, #ffa500, #ffff00, 
+    #9acd32, #00ff00, #00ffff, #0080ff, 
+    #0000ff, #4b0082, #8b00ff, #ff1493,
+    #ff0000
+  );
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: rainbowFade 3s ease-in-out infinite;
+}
+
+/* Wedding Font Heading Styles */
+.wedding-heading {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 600;
+}
+
+.wedding-title {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+}
+  
+  /* Glass Morphism Effects */
+  .glass-pride {
+    @apply backdrop-blur-lg bg-black/80 border border-white/20 rounded-2xl shadow-2xl text-white;
+    backdrop-filter: blur(16px);
+  }
+  
+  .glass-pride-strong {
+    @apply backdrop-blur-xl bg-black/90 border border-white/30 rounded-2xl shadow-2xl text-white;
+    backdrop-filter: blur(20px);
+  }
+  
+  .glass-pride-dark {
+    @apply backdrop-blur-lg bg-black/90 border border-white/10 rounded-2xl shadow-2xl text-white;
+    backdrop-filter: blur(16px);
+  }
+  
+  /* Identity-Based Styling */
+  .identity-lesbian {
+    @apply lesbian-gradient;
+  }
+  
+  .identity-bisexual {
+    @apply bisexual-gradient;
+  }
+  
+  .identity-pansexual {
+    @apply pansexual-gradient;
+  }
+  
+  .identity-transgender {
+    @apply transgender-gradient;
+  }
+  
+  .identity-rainbow {
+    @apply rainbow-gradient;
+  }
+  .gradient-text-pride {
+    background: linear-gradient(-45deg, 
+      var(--lesbian-orange), 
+      var(--lesbian-pink), 
+      var(--bisexual-purple), 
+      var(--rainbow-blue), 
+      var(--rainbow-purple)
+    );
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: slowPrideGradient 8s ease-in-out infinite;
+  }
+
+  .bi-gradient {
+    background: linear-gradient(-45deg, 
+      var(--bisexual-pink), 
+      var(--bisexual-purple), 
+      var(--bisexual-blue)
+    );
+    background-size: 400% 400%;
+    animation: slowPrideGradient 8s ease-in-out infinite;
+  }
+  .glass-card {
+    @apply glass-pride;
+  }
+  
+  /* Pride Buttons & Cards */
+  .btn-pride {
+    @apply bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white font-semibold py-2 px-4 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300;
+  }
+  
+  .card-pride {
+    @apply glass-pride border-pink-200/50 hover:border-purple-300/50 transition-all duration-300;
+  }
+  
+  .pride-border {
+    @apply border-4 border-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-border rounded-lg;
+  }
+  
+  /* Page Backgrounds */
+  .page-gradient {
+    @apply rainbow-gradient min-h-screen relative overflow-hidden;
+  }
+  
+  .page-gradient::before {
+    content: '';
+    @apply absolute inset-0 bg-white/5 backdrop-blur-sm;
+  }
+}
+
+/* Responsive Layout Utilities */
+.responsive-container {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.responsive-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6;
+}
+
+.responsive-flex {
+  @apply flex flex-col sm:flex-row gap-4 sm:gap-6;
 }
